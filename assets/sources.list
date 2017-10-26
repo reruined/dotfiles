@@ -1,0 +1,45 @@
+#------------------------------------------------------------------------------#
+#                   OFFICIAL DEBIAN REPOS                    
+#------------------------------------------------------------------------------#
+
+###### Debian Main Repos
+deb http://deb.debian.org/debian/ stable main contrib non-free
+deb-src http://deb.debian.org/debian/ stable main contrib non-free
+
+deb http://deb.debian.org/debian/ stable-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ stable-updates main contrib non-free
+
+deb http://deb.debian.org/debian-security stable/updates main
+deb-src http://deb.debian.org/debian-security stable/updates main
+
+deb http://ftp.debian.org/debian stretch-backports main
+deb-src http://ftp.debian.org/debian stretch-backports main
+
+#------------------------------------------------------------------------------#
+#                      UNOFFICIAL  REPOS                       
+#------------------------------------------------------------------------------#
+
+###### 3rd Party Binary Repos
+###Atom Editor
+deb https://dl.bintray.com/alanfranz/atom-apt stable main
+
+###Debian Multimedia
+deb https://www.deb-multimedia.org stable main non-free
+
+###Dropbox
+deb http://linux.dropbox.com/debian jessie main
+
+###Opera
+deb https://deb.opera.com/opera-stable/ stable non-free
+
+###Steam
+deb http://repo.steampowered.com/steam/ precise steam
+
+###Virtualbox
+deb http://download.virtualbox.org/virtualbox/debian stretch contrib
+
+###Visual Studio Code
+deb https://packages.microsoft.com/repos/vscode stable main
+
+###Vivaldi Browser
+deb http://repo.vivaldi.com/stable/deb/ stable main

@@ -5,5 +5,7 @@ if (( $EUID != 0 )); then
 	exit 1
 fi
 
+cd $(dirname $0)
+
 apt install alsa-utils saytime &&\
 saytime

@@ -9,6 +9,8 @@ if (( $EUID != 0 )); then
 	exit 1
 fi
 
+cd $(dirname $0)
+
 apt install curl wget apt-transport-https dirmngr &&\
 curl https://www.franzoni.eu/keys/D401AB61.txt | apt-key add - &&\
 wget http://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb && dpkg -i deb-multimedia-keyring_2016.8.1_all.deb &&\

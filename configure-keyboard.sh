@@ -9,6 +9,8 @@ if (( $EUID != 0 )); then
 	exit 1
 fi
 
+cd $(dirname $0)
+
 $CP /etc/default/keyboard $BACKUP &&\
 $CP $ASSETS/keyboard /etc/default/keyboard &&\
 udevadm trigger --subsystem-match=input --action=change

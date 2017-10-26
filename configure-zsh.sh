@@ -10,6 +10,8 @@ if (( $EUID == 0 )); then
 	exit 1
 fi
 
+cd $(dirname $0)
+
 function realpath { echo $(cd $(dirname $1); pwd)/$(basename $1); }
 
 sudo apt install curl git zsh &&\

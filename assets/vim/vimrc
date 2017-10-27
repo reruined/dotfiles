@@ -1,0 +1,279 @@
+" TODO:
+" learn fugitive properly
+"
+
+call plug#begin('~/.vim/plugged')
+
+" color scheme
+Plug 'https://github.com/morhetz/gruvbox.git'
+
+" fuzzy file search
+Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+
+" git
+Plug 'https://github.com/airblade/vim-gitgutter.git'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+
+" web dev
+Plug 'https://github.com/alvan/vim-closetag.git'
+" Plug 'https://github.com/othree/html5.vim.git'
+Plug 'https://github.com/groenewege/vim-less.git'
+" Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
+" Plug 'https://github.com/StanAngeloff/php.vim.git'
+" Plug 'https://github.com/mxw/vim-jsx.git'
+Plug 'https://github.com/mtscout6/syntastic-local-eslint.vim.git'
+
+" rust
+Plug 'https://github.com/rust-lang/rust.vim.git'
+
+" misc
+"Plug 'https://github.com/SirVer/ultisnips.git'
+Plug 'https://github.com/scrooloose/syntastic.git'
+Plug 'https://github.com/Valloric/YouCompleteMe.git'
+Plug 'https://github.com/rdnetto/YCM-Generator.git', { 'branch': 'stable' }
+Plug 'https://github.com/ntpeters/vim-better-whitespace.git'
+Plug 'https://github.com/majutsushi/tagbar.git'
+" Plug 'https://github.com/tikhomirov/vim-glsl.git'
+Plug 'https://github.com/sheerun/vim-polyglot.git'
+"Plug 'https://github.com/xolox/vim-easytags.git'
+call plug#end()
+
+" ctrlp
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_match_current_file = 1
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" syntastic
+let g:syntastic_debug = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_css_checkers = ['stylelint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 10
+
+" gitgutter
+let g:gitgutter_sign_column_always = 1
+
+" javascript-libraries-syntax
+let g:used_javascript_libs = 'jquery,angularjs'
+
+" youcompleteme
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_keep_logfiles = 1
+"let g:ycm_log_level = 'debug'
+"let g:ycm_register_as_syntastic_checker = 1
+" let g:loaded_youcompleteme = 0 " can be used to disable YCM
+
+" Basics
+set nocompatible
+set hidden
+set backspace=indent,eol,start
+set lazyredraw
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+set ttimeout
+
+" Tags
+set tags+=tags
+
+" Enable mouse interaction
+set mouse=a
+
+" Color scheme
+set t_Co=256
+set background=dark
+colo gruvbox
+
+" Search
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Line wrap
+set wrap
+set linebreak
+set breakindent
+set scrolloff=3
+set sidescrolloff=3
+
+" Line numbers
+set number
+set relativenumber
+set numberwidth=6
+
+" Swap
+set swapfile
+set directory=$HOME/.vim/swp//
+call system('mkdir ' . &directory)
+
+" Backup
+set backup
+set backupdir=$HOME/.vim/bak//
+call system('mkdir ' . &backupdir)
+
+" Undo
+set undofile
+set undodir=$HOME/.vim/undo//
+set undolevels=1000
+set undoreload=10000
+call system('mkdir ' . &undodir)
+
+" Show partial commands
+set showcmd
+
+" Highlight current line
+set cursorline
+
+" Detect changes from outside of Vim
+set autoread
+
+" Better command-line completion
+set wildmenu
+set wildmode=longest,full
+"set complete=.,t,i,u
+set omnifunc=syntaxcomplete#Complete
+
+" Always show status line
+set laststatus=2
+
+" Highlight specified column
+set colorcolumn=80
+
+" Show edit mode
+set showmode
+
+" Longer history
+set history=10000
+
+" Indentation
+set expandtab
+set shiftround
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+
+" Folds
+"set foldmethod=syntax
+"set foldlevelstart=1
+
+" Enable filetype detection
+filetype plugin indent on
+
+" Mappings
+let mapleader = "\<space>"
+let localleader = "ä"
+nnoremap <space> <nop>
+nnoremap gb :ls<CR>:buffer<Space>
+nnoremap H 0
+nnoremap L $
+nnoremap 0 <nop>
+nnoremap $ <nop>
+nnoremap <silent> <c-h> :wincmd h<cr>
+nnoremap <silent> <c-j> :wincmd j<cr>
+nnoremap <silent> <c-k> :wincmd k<cr>
+nnoremap <silent> <c-l> :wincmd l<cr>
+nnoremap _ ddp==
+nnoremap - ddkP==
+nnoremap <silent> <M-left> :wincmd H<cr>
+nnoremap <silent> <M-right> :wincmd L<cr>
+nnoremap <silent> <M-up> :wincmd K<cr>
+nnoremap <silent> <M-down> :wincmd J<cr>
+nnoremap <c-w> <nop>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>p :CtrlPTag<cr>
+nnoremap <leader>g :YcmCompleter GoTo<cr>
+nnoremap <leader>w :StripWhitespace<cr>
+nnoremap <F8> :TagbarToggle<cr>
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap  <nop>
+vnoremap H 0
+vnoremap L $
+vnoremap - <esc>`<kdd`>p`<v`>
+vnoremap _ <esc>`>jdd`<P`<v`>
+" cnoremap w!! w !sudo tee > /dev/null %
+
+" Turn off caps lock
+"python << EOF
+"from ctypes import *
+"X11 = cdll.LoadLibrary("libX11.so.6")
+"display = X11.XOpenDisplay(None)
+"X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0))
+"X11.XCloseDisplay(display)
+"EOF
+
+augroup filetype_cson
+    autocmd!
+    autocmd BufRead,BufNewFile *.cson set ft=coffee
+augroup END
+
+augroup filetype_javascript
+    autocmd!
+    autocmd FileType javascript nnoremap <buffer> <leader>f :!eslint --fix %<cr>
+    autocmd FileType javascript nnoremap <buffer> <leader>c I//<space><esc>
+    autocmd FileType javascript vnoremap <leader>/ <esc>`>a*/<esc>`<i/*<esc>
+    autocmd FileType javascript nnoremap <leader>/ I//<esc>
+    autocmd FileType javascript :iabbrev <buffer> fn function
+    autocmd FileType javascript :iabbrev <buffer> pr prototype
+    autocmd FileType javascript :iabbrev <buffer> clog console.log
+    autocmd FileType javascript :iabbrev <buffer> cwarn console.warn
+    autocmd FileType javascript :iabbrev <buffer> ret return
+    autocmd FileType javascript,json,less setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+augroup END
+
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim nnoremap <buffer> <leader>c I"<space><esc>
+augroup END
+
+augroup filetype_cpp
+    autocmd!
+    autocmd FileType cpp,c vnoremap <leader>/ <esc>`>a*/<esc>`<i/*<esc>
+    autocmd FileType cpp,c nnoremap <leader>/ I//<esc>
+    autocmd FileType cpp,c :iabbrev <buffer> ret return
+    autocmd FileType cpp,c :iabbrev <buffer> hdg #ifndef _NEW_UNIT_H_<cr>#define _NEW_UNIT_H_<cr><cr><cr><cr>#endif /*_NEW_UNIT_H_*/<esc>gg2j:redraw!<cr>:%s/_NEW_UNIT_H_//g<left><left>
+    "autocmd FileType cpp,c setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+augroup END
+
+augroup filetype_html
+    autocmd!
+    autocmd FileType html setlocal expandtab shiftwidth=3 tabstop=3 softtabstop=3
+augroup END
+
+augroup modehighlight
+    autocmd!
+    autocmd InsertEnter * :hi CursorLine ctermbg=16 | :hi CursorLineNr ctermbg=16
+    autocmd InsertLeave * :hi CursorLine ctermbg=237 | :hi CursorLineNr ctermbg=237
+augroup END
+
+augroup strip_whitespace
+    autocmd!
+    "autocmd FileType javascript,vim,typescript,html,json,less,css,cpp,c autocmd BufWritePre <buffer> StripWhitespace
+    "autocmd VimEnter * DisableWhitespace
+augroup END
+
+augroup fold_rules
+    autocmd!
+    autocmd BufRead * normal zR
+augroup END
+
+augroup vim_less
+    autocmd!
+    autocmd BufNewFile,BufRead *.less set filetype=less
+    autocmd FileType less set omnifunc=csscomplete#CompleteCSS
+augroup END
+
+set exrc
+set secure

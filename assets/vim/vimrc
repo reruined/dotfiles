@@ -56,9 +56,6 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 10
 
-" gitgutter
-let g:gitgutter_sign_column_always = 1
-
 " javascript-libraries-syntax
 let g:used_javascript_libs = 'jquery,angularjs'
 
@@ -80,6 +77,7 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 set ttimeout
+set signcolumn=yes
 
 " Tags
 set tags+=tags

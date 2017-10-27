@@ -2,7 +2,7 @@
 #                   OFFICIAL DEBIAN REPOS                    
 #------------------------------------------------------------------------------#
 
-###### Debian Main Repos
+###### Debian Main Repos (stable)
 deb http://deb.debian.org/debian/ stable main contrib non-free
 deb-src http://deb.debian.org/debian/ stable main contrib non-free
 
@@ -14,6 +14,16 @@ deb-src http://deb.debian.org/debian-security stable/updates main
 
 deb http://ftp.debian.org/debian stretch-backports main
 deb-src http://ftp.debian.org/debian stretch-backports main
+
+###### Debian Main Repos (testing)
+deb http://deb.debian.org/debian/ testing main contrib non-free
+deb-src http://deb.debian.org/debian/ testing main contrib non-free
+
+deb http://deb.debian.org/debian/ testing-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ testing-updates main contrib non-free
+
+deb http://deb.debian.org/debian-security testing/updates main
+deb-src http://deb.debian.org/debian-security testing/updates main
 
 #------------------------------------------------------------------------------#
 #                      UNOFFICIAL  REPOS                       

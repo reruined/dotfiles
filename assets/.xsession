@@ -1,3 +1,3 @@
-xset b off 
+xset b off
 nm-applet &
 awesome

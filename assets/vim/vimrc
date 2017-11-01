@@ -28,6 +28,7 @@ Plug 'https://github.com/mtscout6/syntastic-local-eslint.vim.git'
 Plug 'https://github.com/rust-lang/rust.vim.git'
 
 " misc
+Plug 'git@github.com:tpope/vim-sleuth.git'
 "Plug 'https://github.com/SirVer/ultisnips.git'
 Plug 'https://github.com/scrooloose/syntastic.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git'

@@ -22,10 +22,8 @@ alias s="git status"
 
 alias las="du -hcs ./{*(N),.*(N)} | sort -hr"
 alias glögg=glog
-
-first=~/Repositories/ikea-first
-algot=~/Repositories/ikea-algot
-goat=~/Repositories/goat
+alias gpup='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
+alias gpf="git push --force-with-lease"
 
 function git-examine {
    git difftool $1 $(git merge-base $1 $2) 

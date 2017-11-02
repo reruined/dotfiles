@@ -15,7 +15,7 @@ fi
 cd $(dirname $0)
 
 # remember xsession!
-sudo apt install awesome awesome-extra rxvt-unicode-256color physlock fonts-dejavu-extra &&
+sudo apt install awesome awesome-extra rxvt-unicode-256color physlock fonts-dejavu-extra upower &&
 $CP ~/.config/awesome ~/.xsession ~/.Xresources $BACKUP/
 $RM ~/.config/awesome ~/.xsession ~/.Xresources
 $LN $(realpath "$ASSETS/awesome") ~/.config/awesome &&

@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/bash -x
 
 BACKUP=./backup
 ASSETS=./assets
-CP="cp -iv"
+CP="cp -ivr"
 RM="rm -rfv"
 LN="ln -svi"
 function realpath { echo $(cd $(dirname $1); pwd)/$(basename $1); }
@@ -18,8 +18,8 @@ $CP ~/.vim ~/.vimrc $BACKUP/
 $RM ~/.vim ~/.vimrc
 sudo apt purge vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox &&
 $LN $(realpath "$ASSETS/vim") ~/.vim
-sudo apt build-dep vim &&
-sudo apt install python-dev python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git build-essential cmake mono-devel golang rustc cargo
+sudo apt install python-dev python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git build-essential cmake mono-devel golang rustc cargo &&
+#sudo apt build-dep vim &&
 cd ./vim
 make distclean &&
 ./configure --with-features=huge \

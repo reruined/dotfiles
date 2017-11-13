@@ -1,3 +1,141 @@
+call plug#begin('~/.vim/plugged')
+Plug 'morhetz/gruvbox'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
+Plug 'sjl/gundo.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'valloric/YouCompleteMe'
+call plug#end()
+
+" Basics
+set nocompatible
+set backspace=indent,eol,start
+set lazyredraw
+
+" ctrlp
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_switch_buffer = 0
+
+" Enable filetype detection
+filetype plugin indent on
+
+" Sign column
+set signcolumn=yes
+
+" Enable mouse
+set mouse=a
+
+" Show partial commands
+set showcmd
+
+" Always show status line
+set laststatus=2
+
+" Better command-line completion
+set wildmenu
+set wildmode=longest,full
+
+" Color scheme
+set t_Co=256
+set background=dark
+colo gruvbox
+
+" Swap
+set swapfile
+set directory=$HOME/.vim/swp//
+call system('mkdir ' . &directory)
+
+" Backup
+set backup
+set backupdir=$HOME/.vim/bak//
+call system('mkdir ' . &backupdir)
+
+" Undo
+set undofile
+set undodir=$HOME/.vim/undo//
+set undolevels=1000
+set undoreload=10000
+call system('mkdir ' . &undodir)
+
+" No timeout when cancelling command
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+" Simple search
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Relative line numbers
+set number
+set relativenumber
+set numberwidth=6
+
+" Highlight column
+set colorcolumn=80
+
+" Highlight current line, and change color in insert mode
+set cursorline
+augroup modehighlight
+    autocmd!
+    autocmd InsertEnter * :hi CursorLine ctermbg=16 | :hi CursorLineNr ctermbg=16
+    autocmd InsertLeave * :hi CursorLine ctermbg=237 | :hi CursorLineNr ctermbg=237
+augroup END
+
+""" 
+""" Mappings
+""" --------------------------------------------
+
+" Remap 0 (line start) and $ (line end) to H and L
+nnoremap H 0
+nnoremap L $
+vnoremap H 0
+vnoremap L $
+nnoremap 0 <nop>
+nnoremap $ <nop>
+
+" Simpler mappings for navigating between and moving splits
+nnoremap <silent> <c-h> :wincmd h<cr>
+nnoremap <silent> <c-j> :wincmd j<cr>
+nnoremap <silent> <c-k> :wincmd k<cr>
+nnoremap <silent> <c-l> :wincmd l<cr>
+nnoremap <silent> <M-left> :wincmd H<cr>
+nnoremap <silent> <M-right> :wincmd L<cr>
+nnoremap <silent> <M-up> :wincmd K<cr>
+nnoremap <silent> <M-down> :wincmd J<cr>
+
+" Disable arrow keys and Ctrl-C for interactive mode
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap  <nop>
+
+" Set mapleader to space
+let mapleader = "\<space>"
+"nnoremap <space> <nop>
+
+" Quick access to vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" EasyMotion
+map <Leader> <Plug>(easymotion-prefix)
+
+" Tagbar
+nnoremap <silent> <F8> :TagbarToggle<cr>
+
+" CtrlPTag
+nnoremap <silent> <leader>p :CtrlPTag<cr>
+
+" Test
+nnoremap ä <C-\s>
+
 " links:
 " https://www.reddit.com/r/vim/comments/5iz4cw/making_a_vim_setup_for_cc/
 " https://www.quora.com/How-to-build-vim-editor-in-Linux-into-an-effective-C++-programming-IDE

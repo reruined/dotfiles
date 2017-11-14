@@ -4,20 +4,39 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-fugitive'
 Plug 'sjl/gundo.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'valloric/YouCompleteMe'
+Plug 'valloric/listtoggle'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'tikhomirov/vim-glsl'
+Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 
 " Basics
 set nocompatible
 set backspace=indent,eol,start
 set lazyredraw
+set hidden
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_switch_buffer = 0
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<up>"
+let g:UltiSnipsJumpForwardTrigger="<down>"
+
+" vim-cpp-enhanced-highlight
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_class_scope_highlight = 1
 
 " Enable filetype detection
 filetype plugin indent on
@@ -37,6 +56,9 @@ set laststatus=2
 " Better command-line completion
 set wildmenu
 set wildmode=longest,full
+
+" Better completion
+set omnifunc=syntaxcomplete#Complete
 
 " Color scheme
 set t_Co=256
@@ -59,6 +81,12 @@ set undodir=$HOME/.vim/undo//
 set undolevels=1000
 set undoreload=10000
 call system('mkdir ' . &undodir)
+
+" Longer history
+set history=10000
+
+" Detect changes from outside of vim
+set autoread
 
 " No timeout when cancelling command
 set notimeout
@@ -85,6 +113,18 @@ augroup modehighlight
     autocmd!
     autocmd InsertEnter * :hi CursorLine ctermbg=16 | :hi CursorLineNr ctermbg=16
     autocmd InsertLeave * :hi CursorLine ctermbg=237 | :hi CursorLineNr ctermbg=237
+augroup END
+
+" YCM
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_always_populate_location_list = 1
+let g:ycm_global_ycm_extra_conf = $HOME.'/.vim/.ycm_extra_conf.py'
+
+" Better indentation for CPP lambdas
+augroup filetype_cpp
+    autocmd!
+    setlocal cindent cino=j1,(0,ws,Ws
 augroup END
 
 """ 
@@ -135,6 +175,18 @@ nnoremap <silent> <leader>p :CtrlPTag<cr>
 
 " Test
 nnoremap ä <C-\s>
+
+" YCM
+nnoremap <F9> :YcmCompleter FixIt<cr>
+nnoremap <silent> <leader>go :YcmCompleter GoTo<cr>
+nnoremap <silent> <leader>gt :YcmCompleter GetType<cr>
+nnoremap <silent> <leader>gd :YcmCompleter GoToDeclaration<cr>
+
+" Use dash and underscore to quickly move a line/selection up or down
+nnoremap _ ddp==
+nnoremap - ddkP==
+vnoremap - <esc>`<kdd`>p`<v`>
+vnoremap _ <esc>`>jdd`<P`<v`>
 
 " links:
 " https://www.reddit.com/r/vim/comments/5iz4cw/making_a_vim_setup_for_cc/

@@ -121,10 +121,10 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_global_ycm_extra_conf = $HOME.'/.vim/.ycm_extra_conf.py'
 
-" Better indentation for CPP lambdas
+" Better indentation for CPP
 augroup filetype_cpp
     autocmd!
-    setlocal cindent cino=j1,(0,ws,Ws
+    autocmd FileType cpp,c setlocal cindent cino=j1,(0,ws,Ws
 augroup END
 
 """ 

@@ -16,6 +16,7 @@ Plug 'honza/vim-snippets'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tikhomirov/vim-glsl'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " Basics
@@ -23,6 +24,10 @@ set nocompatible
 set backspace=indent,eol,start
 set lazyredraw
 set hidden
+set exrc
+
+" editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']

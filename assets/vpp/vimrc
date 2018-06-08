@@ -1,30 +1,32 @@
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
+"Plug 'othree/yajs.vim'
+"Plug 'pangloss/vim-javascript'
+Plug 'SirVer/ultisnips'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-surround'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'honza/vim-snippets'
+Plug 'majutsushi/tagbar'
+Plug 'morhetz/gruvbox'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'sjl/gundo.vim'
+Plug 'tikhomirov/vim-glsl'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-fugitive'
-Plug 'sjl/gundo.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-surround'
 Plug 'valloric/YouCompleteMe'
 Plug 'valloric/listtoggle'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'tikhomirov/vim-glsl'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " Basics
-set nocompatible
 set backspace=indent,eol,start
-set lazyredraw
-set hidden
 set exrc
+set hidden
+set lazyredraw
+set nocompatible
 
 " editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
